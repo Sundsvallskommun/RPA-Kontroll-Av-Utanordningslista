@@ -99,6 +99,7 @@
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1724,3578" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -141,7 +142,7 @@
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
     <ui:GetRobotCredential TimeoutMS="{x:Null}" Username="{x:Null}" AssetName="EncryptionKey" CacheStrategy="None" DisplayName="Get Credential" sap:VirtualizedContainerService.HintSize="1662,181" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[TempEncryptionKey]" />
-    <Sequence DisplayName="Init Vars" sap:VirtualizedContainerService.HintSize="1662,81" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="Init Vars" sap:VirtualizedContainerService.HintSize="1007,3426" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="EncryptionKey" />
         <Variable x:TypeArguments="x:Int32" Name="Month" />
@@ -208,7 +209,7 @@
           <OutArgument x:TypeArguments="x:Int32">[Omkosnadsersattning]</OutArgument>
         </Assign.To>
         <Assign.Value>
-          <InArgument x:TypeArguments="x:Int32">[CInt(in_TransactionItem.SpecificContent("Omkosnadsersättning").ToString.Replace(" ", "").Split("."c)(0))]</InArgument>
+          <InArgument x:TypeArguments="x:Int32">[If(String.IsNullOrEmpty(in_TransactionItem.SpecificContent("Omkosnadsersättning").ToString.Replace(" ", "").Split("."c)(0).ToString), 0, CInt(in_TransactionItem.SpecificContent("Omkosnadsersättning").ToString.Replace(" ", "").Split("."c)(0)))]</InArgument>
         </Assign.Value>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -222,7 +223,7 @@
           <OutArgument x:TypeArguments="x:Int32">[Arvodesersattning]</OutArgument>
         </Assign.To>
         <Assign.Value>
-          <InArgument x:TypeArguments="x:Int32">[CInt(in_TransactionItem.SpecificContent("Arvodesersättning").ToString.Replace(" ", "").Split("."c)(0))]</InArgument>
+          <InArgument x:TypeArguments="x:Int32">[If(String.IsNullOrEmpty(in_TransactionItem.SpecificContent("Arvodesersättning").ToString.Replace(" ", "").Split("."c)(0).ToString), 0, CInt(in_TransactionItem.SpecificContent("Arvodesersättning").ToString.Replace(" ", "").Split("."c)(0)))]</InArgument>
         </Assign.Value>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -274,31 +275,6 @@
           </InArgument>
         </uca:DecryptText.Encoding>
       </uca:DecryptText>
-      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="945,52" sap2010:WorkflowViewState.IdRef="CommentOut_5">
-        <ui:CommentOut.Body>
-          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,193" sap2010:WorkflowViewState.IdRef="Sequence_49">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <Assign DisplayName="Assign Format SSN" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_33">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:String">[SSN]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:String">[SSN.Insert(SSN.Length-4, "-")]</InArgument>
-              </Assign.Value>
-            </Assign>
-          </Sequence>
-        </ui:CommentOut.Body>
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </ui:CommentOut>
       <Assign DisplayName="Assign DectrypedName" sap:VirtualizedContainerService.HintSize="945,82" sap2010:WorkflowViewState.IdRef="Assign_38">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[DectrypedName]</OutArgument>
@@ -821,7 +797,7 @@
         </If.Else>
       </If>
     </Sequence>
-    <ui:WriteRange AddHeaders="False" DataTable="[ExcelFileResult]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="1564,116" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Blad1" StartingCell="A2" WorkbookPath="[FilePathExcel]" />
-    <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="1564,56" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
+    <ui:WriteRange AddHeaders="False" DataTable="[ExcelFileResult]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="1662,116" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Blad1" StartingCell="A2" WorkbookPath="[FilePathExcel]" />
+    <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="1662,56" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
   </Sequence>
 </Activity>
