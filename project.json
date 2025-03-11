@@ -1,9 +1,14 @@
 {
-  "name": "RoboticEnterpriseFramework-Legacy",
+  "name": "Kontroll av utanordningslista",
+  "projectId": "f2ed36cb-b5cb-45d3-8284-7fed752005d1",
   "description": "Robotic Enterprise Framework (Windows Legacy)",
   "main": "Main.xaml",
   "dependencies": {
-    "UiPath.Excel.Activities": "[2.20.3]",
+    "OpenEplatform.API": "[1.0.15-alpha.1]",
+    "Procapita_Plus_Legacy": "[1.0.3-alpha.11]",
+    "UiPath.Cryptography.Activities": "[1.4.2]",
+    "UiPath.Excel.Activities": "[2.22.4]",
+    "UiPath.PDF.Activities": "[3.16.0]",
     "UiPath.System.Activities": "[24.3.1]",
     "UiPath.Testing.Activities": "[23.10.1]",
     "UiPath.UIAutomation.Activities": "[23.10.13]"
@@ -12,7 +17,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "23.4.5.0",
-  "projectVersion": "1.0.0",
+  "projectVersion": "1.0.1-alpha.1",
   "runtimeOptions": {
     "autoDispose": false,
     "netFrameworkLazyLoading": false,
@@ -92,7 +97,8 @@
         "fileName": "Tests\\TakeScreenshotTestCase.xaml"
       }
     ],
-    "modernBehavior": false
+    "modernBehavior": false,
+    "saveToCloud": false
   },
   "expressionLanguage": "VisualBasic",
   "entryPoints": [
