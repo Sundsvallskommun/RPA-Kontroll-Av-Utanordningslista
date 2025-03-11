@@ -148,7 +148,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadPDFText PreserveFormatting="{x:Null}" Range="{x:Null}" DisplayName="Private: Read PDF Text" FileName="[in_FilePathToUtanordningslista]" sap:VirtualizedContainerService.HintSize="1690,68" sap2010:WorkflowViewState.IdRef="ReadPDFText_1" Text="[PDFTextFromUtanordningslista]">
+    <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Private: Read PDF Text" FileName="[in_FilePathToUtanordningslista]" sap:VirtualizedContainerService.HintSize="1690,68" sap2010:WorkflowViewState.IdRef="ReadPDFText_1" Range="All" Text="[PDFTextFromUtanordningslista]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
