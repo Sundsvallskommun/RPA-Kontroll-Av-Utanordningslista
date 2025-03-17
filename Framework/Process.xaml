@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>2029,2777</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1616,5996</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="50">
@@ -102,7 +102,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1626,2712" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1626,5931" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="FilePathToApplication" />
       <Variable x:TypeArguments="ss:SecureString" Name="TempEncryptionKey" />
@@ -124,7 +124,7 @@
       <Variable x:TypeArguments="x:String" Name="SSN" />
       <Variable x:TypeArguments="x:String" Name="ReportType" />
       <Variable x:TypeArguments="sd:DataTable" Name="Procapita_Table" />
-      <Variable x:TypeArguments="sd:DataTable" Name="StandardCompensationTable" />
+      <Variable x:TypeArguments="sd:DataTable" Name="StandardCompensationTableArvode" />
       <Variable x:TypeArguments="x:String" Name="Name" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
@@ -141,8 +141,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <ui:GetRobotCredential TimeoutMS="{x:Null}" Username="{x:Null}" AssetName="EncryptionKey" CacheStrategy="None" DisplayName="Get Credential" sap:VirtualizedContainerService.HintSize="1564,181" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[TempEncryptionKey]" />
-    <Sequence DisplayName="Init Vars" sap:VirtualizedContainerService.HintSize="1564,81" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="Init Vars" sap:VirtualizedContainerService.HintSize="1564,3521" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="EncryptionKey" />
         <Variable x:TypeArguments="x:Int32" Name="Month" />
@@ -155,7 +154,7 @@
       </Sequence.Variables>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
@@ -367,7 +366,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:BuildDataTable DataTable="[ExcelFileResult]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="388,60" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Namn&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Personnummer&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Utfall&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Kommentar&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+            <ui:BuildDataTable DataTable="[ExcelFileResult]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="388,60" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Namn&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Personnummer&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Utfall&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Kommentar&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Arvodesersättning&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Omkosnadsersättning&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
             <ui:WriteRange StartingCell="{x:Null}" AddHeaders="True" DataTable="[ExcelFileResult]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="388,116" sap2010:WorkflowViewState.IdRef="WriteRange_2" SheetName="Blad1" WorkbookPath="[FilePathExcel]" />
             <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="CommentOut_4">
               <ui:CommentOut.Body>
@@ -400,7 +399,7 @@
           </Sequence>
         </If.Else>
       </If>
-      <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[StandardCompensationTable]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="945,88" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Blad1" WorkbookPath="[FilePathToErsättningsFil]" />
+      <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[StandardCompensationTableArvode]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="945,88" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Arvode" WorkbookPath="[FilePathToErsättningsFil]" />
     </Sequence>
     <Assign DisplayName="Assign io_DictProcapitaTables" sap:VirtualizedContainerService.HintSize="1564,82" sap2010:WorkflowViewState.IdRef="Assign_26">
       <Assign.To>
@@ -425,7 +424,7 @@
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <If Condition="[Not io_DictProcapitaTables.ContainsKey(DictionaryKey)]" DisplayName="Get Data From Procapita" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="If_9">
+          <If Condition="[Not io_DictProcapitaTables.ContainsKey(DictionaryKey)]" DisplayName="Get Data From Procapita" sap:VirtualizedContainerService.HintSize="630,891" sap2010:WorkflowViewState.IdRef="If_9">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -433,7 +432,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <Sequence DisplayName="Get Kontaktperson" sap:VirtualizedContainerService.HintSize="594,705" sap2010:WorkflowViewState.IdRef="Sequence_30">
+              <Sequence DisplayName="Get Kontaktperson" sap:VirtualizedContainerService.HintSize="594,703" sap2010:WorkflowViewState.IdRef="Sequence_30">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="x:Boolean" Name="SearchResultFound" />
                   <Variable x:TypeArguments="x:Int32" Name="EmptyRowIndex" />
@@ -475,7 +474,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:RetryScope>
-                <If Condition="[SearchResultFound]" DisplayName="If SearchResultFound Kontaktperson" sap:VirtualizedContainerService.HintSize="532,502" sap2010:WorkflowViewState.IdRef="If_10">
+                <If Condition="[SearchResultFound]" DisplayName="If SearchResultFound Kontaktperson" sap:VirtualizedContainerService.HintSize="532,500" sap2010:WorkflowViewState.IdRef="If_10">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -483,14 +482,14 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <If.Then>
-                    <Sequence sap:VirtualizedContainerService.HintSize="496,313" sap2010:WorkflowViewState.IdRef="Sequence_34">
+                    <Sequence sap:VirtualizedContainerService.HintSize="496,312" sap2010:WorkflowViewState.IdRef="Sequence_34">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                       <pg1:Get_Table DisplayName="Private: Get Table Kontaktperson" sap:VirtualizedContainerService.HintSize="434,80" sap2010:WorkflowViewState.IdRef="Get_Table_6" in_FilePathToApplication="[FilePathToApplication]" out_dt="[Procapita_Table]" />
-                      <Assign DisplayName="Assign io_DictProcapitaTables" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_14">
+                      <Assign DisplayName="Assign io_DictProcapitaTables" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_14">
                         <Assign.To>
                           <OutArgument x:TypeArguments="sd:DataTable">[io_DictProcapitaTables(DictionaryKey)]</OutArgument>
                         </Assign.To>
@@ -676,7 +675,7 @@
                         <OutArgument x:TypeArguments="x:Int32">[Ersattning]</OutArgument>
                       </Assign.To>
                       <Assign.Value>
-                        <InArgument x:TypeArguments="x:Int32">[CInt(StandardCompensationTable(0)(InsatsNivå).ToString)]</InArgument>
+                        <InArgument x:TypeArguments="x:Int32">[CInt(StandardCompensationTableArvode(0)(InsatsNivå).ToString)]</InArgument>
                       </Assign.Value>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -725,7 +724,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,92" sap2010:WorkflowViewState.IdRef="LogMessage_6" Message="[&quot;Ok! sum/arvode: &quot; + (SumErsattning/Arvodesersattning).ToString]" />
-                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{Name, SSN, &quot;Ok!&quot;, &quot;&quot;}]" DataTable="[ExcelFileResult]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="388,186" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
+                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{Name, SSN, &quot;Ok!&quot;, &quot;&quot;, Arvodesersattning.ToString, Omkosnadsersattning.ToString}]" DataTable="[ExcelFileResult]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="388,186" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
                 </Sequence>
               </If.Then>
               <If.Else>
@@ -736,7 +735,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,92" sap2010:WorkflowViewState.IdRef="LogMessage_7" Message="[&quot;Int ok! sum/arvode: &quot; + (SumErsattning/Arvodesersattning).ToString]" />
-                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{Name, SSN, &quot;Inte Ok!&quot;, &quot;Saknar troligen ett eller flera beslut i procaita denna månad.&quot;}]" DataTable="[ExcelFileResult]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="388,186" sap2010:WorkflowViewState.IdRef="AddDataRow_3" />
+                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{Name, SSN, &quot;Inte Ok!&quot;, &quot;Saknar troligen ett eller flera beslut i procaita denna månad.&quot;, Arvodesersattning.ToString, Omkosnadsersattning.ToString}]" DataTable="[ExcelFileResult]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="388,186" sap2010:WorkflowViewState.IdRef="AddDataRow_3" />
                 </Sequence>
               </If.Else>
             </If>
@@ -749,7 +748,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{Name,SSN, &quot;Inte Ok!&quot;, &quot;Saknar beslut i procapita för månaden.&quot;}]" DataTable="[ExcelFileResult]" DisplayName="Add Data Row - No Decision" sap:VirtualizedContainerService.HintSize="388,186" sap2010:WorkflowViewState.IdRef="AddDataRow_1">
+            <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{Name,SSN, &quot;Inte Ok!&quot;, &quot;Saknar beslut i procapita för månaden.&quot;, Arvodesersattning.ToString, Omkosnadsersattning.ToString}]" DataTable="[ExcelFileResult]" DisplayName="Add Data Row - No Decision" sap:VirtualizedContainerService.HintSize="388,186" sap2010:WorkflowViewState.IdRef="AddDataRow_1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
