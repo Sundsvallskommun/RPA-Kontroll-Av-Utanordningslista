@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1059,2274</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1389,2274</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="50">
@@ -407,11 +407,11 @@
         <Sequence DisplayName="Get Data From Procapita" sap:VirtualizedContainerService.HintSize="450,164" sap2010:WorkflowViewState.IdRef="Sequence_50">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <If Condition="[Not io_DictProcapitaTables.ContainsKey(DictionaryKey)]" DisplayName="Get Data From Procapita" sap:VirtualizedContainerService.HintSize="630,900" sap2010:WorkflowViewState.IdRef="If_9">
+          <If Condition="[Not io_DictProcapitaTables.ContainsKey(DictionaryKey)]" DisplayName="Get Data From Procapita" sap:VirtualizedContainerService.HintSize="388,53" sap2010:WorkflowViewState.IdRef="If_9">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -811,7 +811,10 @@
                 </If>
               </Sequence>
               <FlowStep.Next>
-                <FlowDecision x:Name="__ReferenceID4" Condition="[UtfallArvode.Equals(&quot;Ok&quot;) AndAlso UtfallOmkostnad.Equals(&quot;Ok&quot;)]" DisplayName="Flow Decision" sap:VirtualizedContainerService.HintSize="79,87" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
+                <FlowDecision x:Name="__ReferenceID4" DisplayName="Flow Decision" sap:VirtualizedContainerService.HintSize="79,87" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
+                  <FlowDecision.Condition>
+                    <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="UtfallArvode.Equals(&quot;Ok&quot;)" />
+                  </FlowDecision.Condition>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
