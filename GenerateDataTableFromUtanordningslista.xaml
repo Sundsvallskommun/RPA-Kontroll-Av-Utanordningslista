@@ -5,7 +5,7 @@
     <x:Property Name="out_UtanordningslistaDataTable" Type="OutArgument(sd:DataTable)" />
     <x:Property Name="out_Year" Type="OutArgument(x:String)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>2029,2560</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1185,2512</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -130,7 +130,7 @@
       <AssemblyReference>UiPath.Cryptography.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Generate Data Table From Utanordningslista" sap:VirtualizedContainerService.HintSize="1195,2455" sap2010:WorkflowViewState.IdRef="Sequence_105">
+  <Sequence DisplayName="Generate Data Table From Utanordningslista" sap:VirtualizedContainerService.HintSize="1195,2447" sap2010:WorkflowViewState.IdRef="Sequence_105">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="PDFTextFromUtanordningslista" />
       <Variable x:TypeArguments="sd:DataTable" Name="FilteredUtanordningslistaDataTable" />
@@ -149,7 +149,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Private: Read PDF Text" FileName="[in_FilePathToUtanordningslista]" sap:VirtualizedContainerService.HintSize="1133,69" sap2010:WorkflowViewState.IdRef="ReadPDFText_1" Range="All" Text="[PDFTextFromUtanordningslista]">
+    <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Private: Read PDF Text" FileName="[in_FilePathToUtanordningslista]" sap:VirtualizedContainerService.HintSize="1133,68" sap2010:WorkflowViewState.IdRef="ReadPDFText_1" Range="All" Text="[PDFTextFromUtanordningslista]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -157,15 +157,15 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ReadPDFText>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1133,53" sap2010:WorkflowViewState.IdRef="CommentOut_7">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1133,52" sap2010:WorkflowViewState.IdRef="CommentOut_7">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,246" sap2010:WorkflowViewState.IdRef="Sequence_123">
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,244" sap2010:WorkflowViewState.IdRef="Sequence_123">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:WriteTextFile File="{x:Null}" DisplayName="Write Text File" FileName="C:\Users\the12lun\Desktop\Untitled.txt" sap:VirtualizedContainerService.HintSize="388,135" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[PDFTextFromUtanordningslista]" />
+          <ui:WriteTextFile File="{x:Null}" DisplayName="Write Text File" FileName="C:\Users\the12lun\Desktop\Untitled.txt" sap:VirtualizedContainerService.HintSize="388,133" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[PDFTextFromUtanordningslista]" />
         </Sequence>
       </ui:CommentOut.Body>
       <sap:WorkflowViewStateService.ViewState>
@@ -176,7 +176,7 @@
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
     <ui:Matches BuilderPattern="(\d{4})-(\d{2})\s+" DisplayName="Find Matching Patterns" FirstMatch="[DateFromReport]" sap:VirtualizedContainerService.HintSize="1133,60" sap2010:WorkflowViewState.IdRef="Matches_2" Input="[PDFTextFromUtanordningslista]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;DIG&quot;,&quot;OperationName&quot;:&quot;Digit&quot;,&quot;OperationValue&quot;:&quot;\\d&quot;,&quot;QuantifierFirstValue&quot;:&quot;4&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null},{&quot;Index&quot;:1,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;-&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null},{&quot;Index&quot;:2,&quot;OperationID&quot;:&quot;DIG&quot;,&quot;OperationName&quot;:&quot;Digit&quot;,&quot;OperationValue&quot;:&quot;\\d&quot;,&quot;QuantifierFirstValue&quot;:&quot;2&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null},{&quot;Index&quot;:3,&quot;OperationID&quot;:&quot;WHITESP&quot;,&quot;OperationName&quot;:&quot;Whitespace&quot;,&quot;OperationValue&quot;:&quot;\\s&quot;,&quot;QuantifierFirstValue&quot;:&quot;+&quot;,&quot;QuantifierID&quot;:&quot;OOM&quot;,&quot;QuantifierName&quot;:&quot;At least one (1 or more)&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="(\d{4})-(\d{2})\s+" RegexOption="IgnoreCase, Compiled" />
-    <Assign DisplayName="Assign MonthOfReport" sap:VirtualizedContainerService.HintSize="1133,83" sap2010:WorkflowViewState.IdRef="Assign_9">
+    <Assign DisplayName="Assign MonthOfReport" sap:VirtualizedContainerService.HintSize="1133,82" sap2010:WorkflowViewState.IdRef="Assign_9">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_MonthName]</OutArgument>
       </Assign.To>
@@ -184,7 +184,7 @@
         <InArgument x:TypeArguments="x:String">[DateTime.ParseExact(DateFromReport.Trim, "yyyy-MM", System.Globalization.CultureInfo.InvariantCulture).ToString("MMMM", New System.Globalization.CultureInfo("sv-SE"))]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Assign out_Year" sap:VirtualizedContainerService.HintSize="1133,83" sap2010:WorkflowViewState.IdRef="Assign_11">
+    <Assign DisplayName="Assign out_Year" sap:VirtualizedContainerService.HintSize="1133,82" sap2010:WorkflowViewState.IdRef="Assign_11">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_Year]</OutArgument>
       </Assign.To>
@@ -192,7 +192,7 @@
         <InArgument x:TypeArguments="x:String">[DateTime.ParseExact(DateFromReport.Trim, "yyyy-MM", System.Globalization.CultureInfo.InvariantCulture).ToString("yyyy", New System.Globalization.CultureInfo("sv-SE"))]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Assign PDFTextFromUtanordningslista" sap:VirtualizedContainerService.HintSize="1133,83" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Assign PDFTextFromUtanordningslista" sap:VirtualizedContainerService.HintSize="1133,82" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[PDFTextFromUtanordningslista]</OutArgument>
       </Assign.To>
@@ -200,7 +200,7 @@
         <InArgument x:TypeArguments="x:String">[If(PDFTextFromUtanordningslista.IndexOf("Namn") &lt;&gt; -1, PDFTextFromUtanordningslista.Substring(PDFTextFromUtanordningslista.IndexOf("Namn")).Trim(), "")]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:Matches FirstMatch="{x:Null}" sap2010:Annotation.AnnotationText="Måste kolla på, eftersom inte alla har tre rader blir det konstigt... så den hittar inte alla efter? blir tomt efter de rader med bara arvorde." BuilderPattern="(.*\d{6}-\d{4}.*\n)|(Arvode uppdr.*\n)|(Omkostnadsersättning {1,2}\d{4}.*\n)" DisplayName="Find Matching Patterns" sap:VirtualizedContainerService.HintSize="1133,120" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[PDFTextFromUtanordningslista]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;(.*\\d{6}-\\d{4}.*\\n)|(Arvode uppdr.*\\n)|(Omkostnadsersättning {1,2}\\d{4}.*\\n)&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="(.*\d{6}-\d{4}.*\n)|(Arvode uppdr.*\n)|(Omkostnadsersättning {1,2}\d{4}.*\n)" RegexOption="IgnoreCase, Compiled" Result="[RegexedTextFromPDF]">
+    <ui:Matches FirstMatch="{x:Null}" sap2010:Annotation.AnnotationText="Måste kolla på, eftersom inte alla har tre rader blir det konstigt... så den hittar inte alla efter? blir tomt efter de rader med bara arvorde." BuilderPattern="(.*\d{6}-\d{4}.*\n)|(Arvode uppdr.*\n)|(Omkostnadsersättning {1,2}\d{4}.*\n)" DisplayName="Find Matching Patterns" sap:VirtualizedContainerService.HintSize="1133,117" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[PDFTextFromUtanordningslista]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;(.*\\d{6}-\\d{4}.*\\n)|(Arvode uppdr.*\\n)|(Omkostnadsersättning {1,2}\\d{4}.*\\n)&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="(.*\d{6}-\d{4}.*\n)|(Arvode uppdr.*\n)|(Omkostnadsersättning {1,2}\d{4}.*\n)" RegexOption="IgnoreCase, Compiled" Result="[RegexedTextFromPDF]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
