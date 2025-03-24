@@ -102,7 +102,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="888,2196" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="902,2196" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="FilePathToApplication" />
       <Variable x:TypeArguments="ss:SecureString" Name="TempEncryptionKey" />
@@ -134,7 +134,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="826,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]">
+    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="840,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -142,7 +142,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <Sequence DisplayName="Init Vars" sap:VirtualizedContainerService.HintSize="826,81" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="Init Vars" sap:VirtualizedContainerService.HintSize="840,81" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="EncryptionKey" />
         <Variable x:TypeArguments="x:Int32" Name="Month" />
@@ -388,7 +388,7 @@
       <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[StandardCompensationTableArvode]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="479,88" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Arvode" WorkbookPath="[FilePathToErsättningsFil]" />
       <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[StandardCompensationTableOmkostnad]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="479,88" sap2010:WorkflowViewState.IdRef="ReadRange_3" SheetName="Omkostnad" WorkbookPath="[FilePathToErsättningsFil]" />
     </Sequence>
-    <Assign DisplayName="Assign io_DictProcapitaTables" sap:VirtualizedContainerService.HintSize="826,82" sap2010:WorkflowViewState.IdRef="Assign_26">
+    <Assign DisplayName="Assign io_DictProcapitaTables" sap:VirtualizedContainerService.HintSize="840,82" sap2010:WorkflowViewState.IdRef="Assign_26">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:Dictionary(x:String, sd:DataTable)">[io_DictProcapitaTables]</OutArgument>
       </Assign.To>
@@ -396,7 +396,7 @@
         <InArgument x:TypeArguments="scg:Dictionary(x:String, sd:DataTable)">[If(io_DictProcapitaTables IsNot Nothing, io_DictProcapitaTables, New Dictionary(Of String, DataTable))]</InArgument>
       </Assign.Value>
     </Assign>
-    <TryCatch DisplayName="Try Catch Get Data From Procapita" sap:VirtualizedContainerService.HintSize="826,52" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch Get Data From Procapita" sap:VirtualizedContainerService.HintSize="840,52" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -533,7 +533,7 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <Assign DisplayName="Assign Procapita_Table" sap:VirtualizedContainerService.HintSize="826,82" sap2010:WorkflowViewState.IdRef="Assign_37">
+    <Assign DisplayName="Assign Procapita_Table" sap:VirtualizedContainerService.HintSize="840,82" sap2010:WorkflowViewState.IdRef="Assign_37">
       <Assign.To>
         <OutArgument x:TypeArguments="sd:DataTable">[Procapita_Table]</OutArgument>
       </Assign.To>
@@ -547,7 +547,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <If Condition="[Procapita_Table Is Nothing OrElse Procapita_Table.Rows.Count = 0]" DisplayName="If No rows or table" sap:VirtualizedContainerService.HintSize="826,52" sap2010:WorkflowViewState.IdRef="If_14">
+    <If Condition="[Procapita_Table Is Nothing OrElse Procapita_Table.Rows.Count = 0]" DisplayName="If No rows or table" sap:VirtualizedContainerService.HintSize="840,52" sap2010:WorkflowViewState.IdRef="If_14">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -574,7 +574,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <Sequence DisplayName="Check Decision from procapita" sap:VirtualizedContainerService.HintSize="826,1176" sap2010:WorkflowViewState.IdRef="Sequence_12">
+    <Sequence DisplayName="Check Decision from procapita" sap:VirtualizedContainerService.HintSize="840,1176" sap2010:WorkflowViewState.IdRef="Sequence_12">
       <Sequence.Variables>
         <Variable x:TypeArguments="sd:DataTable" Name="Test" />
       </Sequence.Variables>
@@ -584,7 +584,7 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Assign sap2010:Annotation.AnnotationText="Hämta ut alla rader som har personnummer i &quot;resurs&quot;." DisplayName="Assign ListOfMatchesFromProcapita" sap:VirtualizedContainerService.HintSize="764,114" sap2010:WorkflowViewState.IdRef="Assign_9">
+      <Assign sap2010:Annotation.AnnotationText="Hämta ut alla rader som har personnummer i &quot;resurs&quot;." DisplayName="Assign ListOfMatchesFromProcapita" sap:VirtualizedContainerService.HintSize="778,114" sap2010:WorkflowViewState.IdRef="Assign_9">
         <Assign.To>
           <OutArgument x:TypeArguments="scg:List(sd:DataRow)">[ListOfMatchesFromProcapita]</OutArgument>
         </Assign.To>
@@ -601,7 +601,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </Assign>
-      <Flowchart sap:VirtualizedContainerService.HintSize="764,911" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+      <Flowchart sap:VirtualizedContainerService.HintSize="778,911" sap2010:WorkflowViewState.IdRef="Flowchart_1">
         <Flowchart.Variables>
           <Variable x:TypeArguments="x:String" Name="Kommentar" />
           <Variable x:TypeArguments="x:String" Name="UtfallArvode" />
@@ -615,7 +615,7 @@
             <av:Point x:Key="ShapeLocation">400,2.5</av:Point>
             <av:Size x:Key="ShapeSize">60,75</av:Size>
             <av:PointCollection x:Key="ConnectorLocation">430,77.5 430,107.5 434.5,107.5 434.5,126.5</av:PointCollection>
-            <x:Double x:Key="Width">729.5</x:Double>
+            <x:Double x:Key="Width">744</x:Double>
             <x:Double x:Key="Height">874.15418401482862</x:Double>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
@@ -917,7 +917,7 @@
         <FlowStep>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <av:Point x:Key="ShapeLocation">510,703.5</av:Point>
+              <av:Point x:Key="ShapeLocation">20,113.5</av:Point>
               <av:Size x:Key="ShapeSize">200,153</av:Size>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
@@ -1153,7 +1153,7 @@
         <x:Reference>__ReferenceID1</x:Reference>
         <FlowDecision x:Name="__ReferenceID8" DisplayName="Behandlas?" sap:VirtualizedContainerService.HintSize="70,87" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
           <FlowDecision.Condition>
-            <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="Omkosnadsersattning &lt; 0 OrElse _&#xD;&#xA;Arvodesersattning &lt; 0" />
+            <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="Omkosnadsersattning &gt; 0 OrElse _&#xD;&#xA;Arvodesersattning &gt; 0" />
           </FlowDecision.Condition>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -1173,7 +1173,7 @@
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <av:Point x:Key="ShapeLocation">529.5,144</av:Point>
                   <av:Size x:Key="ShapeSize">200,52</av:Size>
-                  <av:PointCollection x:Key="ConnectorLocation">619,465.5 619,495.5 450,495.5 450,583.5</av:PointCollection>
+                  <av:PointCollection x:Key="ConnectorLocation">629.5,196 629.5,270 740.5,270 740.5,713.5 380,713.5 380,743.5</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <Assign DisplayName="Assign Kommentar - Hanteras inte" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="Assign_68">
@@ -1184,6 +1184,9 @@
                   <InArgument x:TypeArguments="x:String">["Hanteras inte."]</InArgument>
                 </Assign.Value>
               </Assign>
+              <FlowStep.Next>
+                <x:Reference>__ReferenceID0</x:Reference>
+              </FlowStep.Next>
             </FlowStep>
           </FlowDecision.False>
         </FlowDecision>
