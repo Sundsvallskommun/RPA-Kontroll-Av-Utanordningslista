@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>2134,5714</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1908,5975</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="50">
@@ -103,7 +103,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1069,5649" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1069,5910" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="FilePathToApplication" />
       <Variable x:TypeArguments="ss:SecureString" Name="TempEncryptionKey" />
@@ -144,7 +144,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <Sequence DisplayName="Init Vars" sap:VirtualizedContainerService.HintSize="1007,3320" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="Init Vars" sap:VirtualizedContainerService.HintSize="1007,3581" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="EncryptionKey" />
         <Variable x:TypeArguments="x:Int32" Name="Month" />
@@ -307,7 +307,7 @@
           <InArgument x:TypeArguments="x:String">[in_Config("FolderPathToUtanordningslistaResult").ToString]</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign DisplayName="Assign FilePathExcel" sap:VirtualizedContainerService.HintSize="945,83" sap2010:WorkflowViewState.IdRef="Assign_12">
+      <Assign DisplayName="Assign FilePathExcel" sap:VirtualizedContainerService.HintSize="945,82" sap2010:WorkflowViewState.IdRef="Assign_12">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[FilePathExcel]</OutArgument>
         </Assign.To>
@@ -315,7 +315,7 @@
           <InArgument x:TypeArguments="x:String" xml:space="preserve">[FolderPathToUtanordningslistaResult + "\" + MonthName + " " + Year +  in_Config("ProcessingPrefix").ToString + ".xlsx"]</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign DisplayName="Assign FilePathToErsättningsFil" sap:VirtualizedContainerService.HintSize="945,83" sap2010:WorkflowViewState.IdRef="Assign_34">
+      <Assign DisplayName="Assign FilePathToErsättningsFil" sap:VirtualizedContainerService.HintSize="945,82" sap2010:WorkflowViewState.IdRef="Assign_34">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[FilePathToErsättningsFil]</OutArgument>
         </Assign.To>
@@ -323,7 +323,7 @@
           <InArgument x:TypeArguments="x:String">[in_Config("FilePathToErsättningsFil").ToString]</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign DisplayName="Assign PercentToAcceptUtanordningslistanOmkostnad" sap:VirtualizedContainerService.HintSize="945,83" sap2010:WorkflowViewState.IdRef="Assign_63">
+      <Assign DisplayName="Assign PercentToAcceptUtanordningslistanOmkostnad" sap:VirtualizedContainerService.HintSize="945,82" sap2010:WorkflowViewState.IdRef="Assign_63">
         <Assign.To>
           <OutArgument x:TypeArguments="x:Double">[PercentToAcceptUtanordningslistanOmkostnad]</OutArgument>
         </Assign.To>
@@ -331,8 +331,8 @@
           <InArgument x:TypeArguments="x:Double">[CDbl(in_Config("PercentToAcceptUtanordningslistanOmkostnad").ToString)]</InArgument>
         </Assign.Value>
       </Assign>
-      <ui:FileExistsX DisplayName="File Exists" Exists="[FileExists]" sap:VirtualizedContainerService.HintSize="945,135" sap2010:WorkflowViewState.IdRef="FileExistsX_2" Path="[FilePathExcel]" />
-      <If Condition="[Not FileExists]" DisplayName="If File Do Not Exist" sap:VirtualizedContainerService.HintSize="945,489" sap2010:WorkflowViewState.IdRef="If_12">
+      <ui:FileExistsX DisplayName="File Exists" Exists="[FileExists]" sap:VirtualizedContainerService.HintSize="945,133" sap2010:WorkflowViewState.IdRef="FileExistsX_2" Path="[FilePathExcel]" />
+      <If Condition="[Not FileExists]" DisplayName="If File Do Not Exist" sap:VirtualizedContainerService.HintSize="945,491" sap2010:WorkflowViewState.IdRef="If_12">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -351,18 +351,21 @@
           </Sequence>
         </If.Then>
         <If.Else>
-          <Sequence sap:VirtualizedContainerService.HintSize="450,199" sap2010:WorkflowViewState.IdRef="Sequence_40">
+          <Sequence sap:VirtualizedContainerService.HintSize="450,331" sap2010:WorkflowViewState.IdRef="Sequence_40">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[ExcelFileResult]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="388,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Blad1" WorkbookPath="[FilePathExcel]" />
+            <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[ExcelFileResult]" DisplayName="Read Range Workbook 1" sap:VirtualizedContainerService.HintSize="388,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Blad1" WorkbookPath="[FilePathExcel]" />
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,92" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="Info" Message="[&quot;Read Range Workbook 1&quot;]" />
           </Sequence>
         </If.Else>
       </If>
-      <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[StandardCompensationTableArvode]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="945,88" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Arvode" WorkbookPath="[FilePathToErsättningsFil]" />
-      <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[StandardCompensationTableOmkostnad]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="945,88" sap2010:WorkflowViewState.IdRef="ReadRange_3" SheetName="Omkostnad" WorkbookPath="[FilePathToErsättningsFil]" />
+      <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[StandardCompensationTableArvode]" DisplayName="Read Range Workbook 2" sap:VirtualizedContainerService.HintSize="945,88" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Arvode" WorkbookPath="[FilePathToErsättningsFil]" />
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="945,92" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Info" Message="[&quot;Read Range Workbook 2&quot;]" />
+      <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[StandardCompensationTableOmkostnad]" DisplayName="Read Range Workbook 3" sap:VirtualizedContainerService.HintSize="945,88" sap2010:WorkflowViewState.IdRef="ReadRange_3" SheetName="Omkostnad" WorkbookPath="[FilePathToErsättningsFil]" />
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="945,92" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Info" Message="[&quot;Read Range Workbook 1&quot;]" />
     </Sequence>
     <Assign DisplayName="Assign io_DictProcapitaTables" sap:VirtualizedContainerService.HintSize="1007,82" sap2010:WorkflowViewState.IdRef="Assign_26">
       <Assign.To>
@@ -617,7 +620,7 @@
                   <av:PointCollection x:Key="ConnectorLocation">160.641666666667,430.5 160.641666666667,460.5 350,460.5 350,503.5</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence DisplayName="Check Arvode" sap:VirtualizedContainerService.HintSize="200,81" sap2010:WorkflowViewState.IdRef="Sequence_59">
+              <Sequence DisplayName="Check Arvode" sap:VirtualizedContainerService.HintSize="594,1339" sap2010:WorkflowViewState.IdRef="Sequence_59">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="scg:List(x:Int32)" Default="[New List(Of Int32)]" Name="ListOfErsattning" />
                   <Variable x:TypeArguments="x:Int32" Name="SumErsattning" />
@@ -630,13 +633,13 @@
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:ForEach x:TypeArguments="sd:DataRow" CurrentIndex="{x:Null}" DisplayName="For Each Beslut I Procapita" sap:VirtualizedContainerService.HintSize="1037,744" sap2010:WorkflowViewState.IdRef="ForEach`1_8" Values="[ListOfMatchesFromProcapita]">
+                <ui:ForEach x:TypeArguments="sd:DataRow" CurrentIndex="{x:Null}" DisplayName="For Each Beslut I Procapita" sap:VirtualizedContainerService.HintSize="532,739" sap2010:WorkflowViewState.IdRef="ForEach`1_8" Values="[ListOfMatchesFromProcapita]">
                   <ui:ForEach.Body>
                     <ActivityAction x:TypeArguments="sd:DataRow">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="sd:DataRow" Name="currentItem" />
                       </ActivityAction.Argument>
-                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,617" sap2010:WorkflowViewState.IdRef="Sequence_71">
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,613" sap2010:WorkflowViewState.IdRef="Sequence_71">
                         <Sequence.Variables>
                           <Variable x:TypeArguments="x:String" Name="InsatsNivå" />
                           <Variable x:TypeArguments="x:Int32" Name="Ersattning" />
@@ -646,7 +649,7 @@
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <Assign DisplayName="Assign InsatsKategori" sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_72">
+                        <Assign DisplayName="Assign InsatsKategori" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_72">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:String">[InsatsKategori]</OutArgument>
                           </Assign.To>
@@ -654,7 +657,7 @@
                             <InArgument x:TypeArguments="x:String">[currentItem("Insats").ToString]</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <Assign DisplayName="Assign InsatsNivå" sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_73">
+                        <Assign DisplayName="Assign InsatsNivå" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_73">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:String">[InsatsNivå]</OutArgument>
                           </Assign.To>
@@ -668,7 +671,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </Assign>
-                        <Assign DisplayName="Assign Ersattning" sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_74">
+                        <Assign DisplayName="Assign Ersattning" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_74">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:Int32">[Ersattning]</OutArgument>
                           </Assign.To>
@@ -682,7 +685,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </Assign>
-                        <InvokeMethod DisplayName="Invoke Method Add Ersattning" sap:VirtualizedContainerService.HintSize="434,137" sap2010:WorkflowViewState.IdRef="InvokeMethod_6" MethodName="Add">
+                        <InvokeMethod DisplayName="Invoke Method Add Ersattning" sap:VirtualizedContainerService.HintSize="434,136" sap2010:WorkflowViewState.IdRef="InvokeMethod_6" MethodName="Add">
                           <InvokeMethod.TargetObject>
                             <InArgument x:TypeArguments="scg:List(x:Int32)">[ListOfErsattning]</InArgument>
                           </InvokeMethod.TargetObject>
@@ -698,7 +701,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:ForEach>
-                <Assign DisplayName="Assign SumErsattning" sap:VirtualizedContainerService.HintSize="1037,83" sap2010:WorkflowViewState.IdRef="Assign_46">
+                <Assign DisplayName="Assign SumErsattning" sap:VirtualizedContainerService.HintSize="532,82" sap2010:WorkflowViewState.IdRef="Assign_46">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Int32">[SumErsattning]</OutArgument>
                   </Assign.To>
@@ -706,7 +709,7 @@
                     <InArgument x:TypeArguments="x:Int32">[ListOfErsattning.Sum]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <Assign DisplayName="Assign PercentToAcceptUtanordningslistanUpperLimit" sap:VirtualizedContainerService.HintSize="1037,83" sap2010:WorkflowViewState.IdRef="Assign_66">
+                <Assign DisplayName="Assign PercentToAcceptUtanordningslistanUpperLimit" sap:VirtualizedContainerService.HintSize="532,82" sap2010:WorkflowViewState.IdRef="Assign_66">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Double">[PercentToAcceptUtanordningslistanUpperLimit]</OutArgument>
                   </Assign.To>
@@ -714,7 +717,7 @@
                     <InArgument x:TypeArguments="x:Double">[1 + PercentToAcceptUtanordningslistan]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <Assign DisplayName="Assign PercentToAcceptUtanordningslistanLowerLimit" sap:VirtualizedContainerService.HintSize="1037,83" sap2010:WorkflowViewState.IdRef="Assign_67">
+                <Assign DisplayName="Assign PercentToAcceptUtanordningslistanLowerLimit" sap:VirtualizedContainerService.HintSize="532,82" sap2010:WorkflowViewState.IdRef="Assign_67">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Double">[PercentToAcceptUtanordningslistanLowerLimit]</OutArgument>
                   </Assign.To>
@@ -728,23 +731,23 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </Assign>
-                <If sap2010:Annotation.AnnotationText="" Condition="[(SumErsattning/Arvodesersattning) &gt;=  PercentToAcceptUtanordningslistanLowerLimit AndAlso (SumErsattning/Arvodesersattning) &lt;= PercentToAcceptUtanordningslistanUpperLimit]" DisplayName="If Ok Ersättning" sap:VirtualizedContainerService.HintSize="1037,644" sap2010:WorkflowViewState.IdRef="If_16">
+                <If sap2010:Annotation.AnnotationText="" Condition="[(SumErsattning/Arvodesersattning) &gt;=  PercentToAcceptUtanordningslistanLowerLimit AndAlso (SumErsattning/Arvodesersattning) &lt;= PercentToAcceptUtanordningslistanUpperLimit]" DisplayName="If Ok Ersättning" sap:VirtualizedContainerService.HintSize="532,83" sap2010:WorkflowViewState.IdRef="If_16">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <If.Then>
-                    <Sequence DisplayName="ok!" sap:VirtualizedContainerService.HintSize="496,328" sap2010:WorkflowViewState.IdRef="Sequence_64">
+                    <Sequence DisplayName="ok!" sap:VirtualizedContainerService.HintSize="496,325" sap2010:WorkflowViewState.IdRef="Sequence_64">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,94" sap2010:WorkflowViewState.IdRef="LogMessage_10" Message="[&quot;Ok! sum/arvode: &quot; + (SumErsattning/Arvodesersattning).ToString]" />
-                      <Assign DisplayName="Assign Utfall - Ok!" sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_53">
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="LogMessage_10" Message="[&quot;Ok! sum/arvode: &quot; + (SumErsattning/Arvodesersattning).ToString]" />
+                      <Assign DisplayName="Assign Utfall - Ok!" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_53">
                         <Assign.To>
                           <OutArgument x:TypeArguments="x:String">[UtfallArvode]</OutArgument>
                         </Assign.To>
@@ -755,14 +758,14 @@
                     </Sequence>
                   </If.Then>
                   <If.Else>
-                    <Sequence DisplayName="Not Ok, missing decision" sap:VirtualizedContainerService.HintSize="496,451" sap2010:WorkflowViewState.IdRef="Sequence_58">
+                    <Sequence DisplayName="Not Ok, missing decision" sap:VirtualizedContainerService.HintSize="496,447" sap2010:WorkflowViewState.IdRef="Sequence_58">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,94" sap2010:WorkflowViewState.IdRef="LogMessage_11" Message="[&quot;Int ok! sum/arvode: &quot; + (SumErsattning/Arvodesersattning).ToString]" />
-                      <Assign DisplayName="Assign Kommentar - Inte Ok!" sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_54">
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="LogMessage_11" Message="[&quot;Int ok! sum/arvode: &quot; + (SumErsattning/Arvodesersattning).ToString]" />
+                      <Assign DisplayName="Assign Kommentar - Inte Ok!" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_54">
                         <Assign.To>
                           <OutArgument x:TypeArguments="x:String">[Kommentar]</OutArgument>
                         </Assign.To>
@@ -770,7 +773,7 @@
                           <InArgument x:TypeArguments="x:String" xml:space="preserve">Arvodet verkar inte stämma. </InArgument>
                         </Assign.Value>
                       </Assign>
-                      <Assign DisplayName="Assign Utfall - Inte ok!" sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_55">
+                      <Assign DisplayName="Assign Utfall - Inte ok!" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_55">
                         <Assign.To>
                           <OutArgument x:TypeArguments="x:String">[UtfallArvode]</OutArgument>
                         </Assign.To>
