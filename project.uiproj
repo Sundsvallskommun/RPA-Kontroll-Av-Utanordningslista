@@ -1,0 +1,6 @@
+{
+  "Name": "Kontroll av utanordningslista",
+  "ProjectType": "Process",
+  "Description": "Robotic Enterprise Framework (Windows Legacy)",
+  "MainFile": "Main.xaml"
+}
