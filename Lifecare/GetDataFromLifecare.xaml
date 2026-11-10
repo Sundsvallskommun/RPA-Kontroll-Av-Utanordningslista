@@ -1,0 +1,118 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="GetDataFromLifecare" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:ld="clr-namespace:LifeCareEC_API.Decisions;assembly=LifeCareEC-API" xmlns:lo="clr-namespace:LifeCareEC_API.Orders;assembly=LifeCareEC-API" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_DateFrom" Type="InArgument(x:String)" />
+    <x:Property Name="in_DateTo" Type="InArgument(x:String)" />
+    <x:Property Name="in_DomainUrl" Type="InArgument(x:String)" />
+    <x:Property Name="in_DomainId" Type="InArgument(x:String)" />
+    <x:Property Name="in_ApiKey" Type="InArgument(ss:SecureString)" />
+    <x:Property Name="out_ResultTable" Type="OutArgument(sd:DataTable)" />
+  </x:Members>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="GetDataFromLifecare" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="njl:JArray" Name="decisions" />
+      <Variable x:TypeArguments="njl:JObject" Name="order" />
+      <Variable x:TypeArguments="x:String" Name="toIso" />
+      <Variable x:TypeArguments="x:String" Name="insats" />
+      <Variable x:TypeArguments="x:String" Name="resurs" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:BuildDataTable DataTable="[out_ResultTable]" DisplayName="Build Data Table (resurs, Insats)" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;        &lt;xs:element name=&quot;TableName&quot;&gt;&lt;xs:complexType&gt;&lt;xs:sequence&gt;&#xA;          &lt;xs:element name=&quot;resurs&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;          &lt;xs:element name=&quot;Insats&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;        &lt;/xs:sequence&gt;&lt;/xs:complexType&gt;&lt;/xs:element&gt;&#xA;      &lt;/xs:choice&gt;&lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+    <Assign DisplayName="Assign toIso" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[toIso]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[DateTime.ParseExact(in_DateTo,"yyyyMMdd",System.Globalization.CultureInfo.InvariantCulture).ToString("yyyy-MM-ddT23:59:59")]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ld:Find_LSS_Decisions ClientCertPassword="{x:Null}" ClientCertPath="{x:Null}" ClientCertSecurePassword="{x:Null}" Limit="{x:Null}" MaxPages="{x:Null}" ModifiedAfter="{x:Null}" ModifiedBefore="{x:Null}" Offset="{x:Null}" PagesFetched="{x:Null}" PersonId="{x:Null}" ResponseCode="{x:Null}" TimeoutMs="{x:Null}" ValuesToMaskInLog="{x:Null}" ApiKey="[in_ApiKey]" BasePath="/WE.EC.Integration.Host" DisplayName="Find LSS Decisions" DomainId="[in_DomainId]" DomainUrl="[in_DomainUrl]" FetchAll="[True]" sap2010:WorkflowViewState.IdRef="FindLss_1" Items="[decisions]" Query="[&quot;FromDate&lt;='&quot; &amp; toIso &amp; &quot;'&quot;]" SendQueryInHeader="True" />
+    <ui:ForEach x:TypeArguments="njl:JObject" CurrentIndex="{x:Null}" DisplayName="For Each beslut" sap2010:WorkflowViewState.IdRef="ForEach_1" Values="[decisions.OfType(Of Newtonsoft.Json.Linq.JObject)()]">
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="njl:JObject">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="njl:JObject" Name="d" />
+          </ActivityAction.Argument>
+          <If Condition="[Not(d(&quot;Deleted&quot;) IsNot Nothing AndAlso CBool(d(&quot;Deleted&quot;))) AndAlso d(&quot;ServiceCategory&quot;) IsNot Nothing AndAlso d(&quot;ServiceCategory&quot;)(&quot;Code&quot;) IsNot Nothing AndAlso d(&quot;ServiceCategory&quot;)(&quot;Code&quot;).ToString = &quot;32&quot; AndAlso d(&quot;OrderIds&quot;) IsNot Nothing]" DisplayName="If kontaktperson" sap2010:WorkflowViewState.IdRef="If_1">
+            <If.Then>
+              <Sequence DisplayName="Behandla beslut" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                <Assign DisplayName="Assign insats" sap2010:WorkflowViewState.IdRef="Assign_3">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[insats]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[d("ServiceCategory")("Text").ToString]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <ui:ForEach x:TypeArguments="njl:JToken" CurrentIndex="{x:Null}" DisplayName="For Each OrderId" sap2010:WorkflowViewState.IdRef="ForEach_2" Values="[DirectCast(d(&quot;OrderIds&quot;), Newtonsoft.Json.Linq.JArray)]">
+                  <ui:ForEach.Body>
+                    <ActivityAction x:TypeArguments="njl:JToken">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="njl:JToken" Name="oid" />
+                      </ActivityAction.Argument>
+                      <TryCatch DisplayName="Try order (hoppa over 404)" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                        <TryCatch.Try>
+                          <Sequence DisplayName="Hamta order och resurs" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                            <lo:Read_Order ClientCertPassword="{x:Null}" ClientCertPath="{x:Null}" ClientCertSecurePassword="{x:Null}" ResponseCode="{x:Null}" ResponseJToken="{x:Null}" TimeoutMs="{x:Null}" ValuesToMaskInLog="{x:Null}" ApiKey="[in_ApiKey]" BasePath="/WE.EC.Integration.Host" DisplayName="Read Order" DomainId="[in_DomainId]" DomainUrl="[in_DomainUrl]" sap2010:WorkflowViewState.IdRef="ReadOrder_1" Item="[order]" OrderId="[oid.ToString]" />
+                            <Assign DisplayName="Assign resurs" sap2010:WorkflowViewState.IdRef="Assign_4">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[resurs]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">[If(order("Provider") IsNot Nothing AndAlso order("Provider")("Id") IsNot Nothing, order("Provider")("Id").ToString, "")]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <If Condition="[resurs &lt;&gt; &quot;&quot;]" DisplayName="If resurs finns" sap2010:WorkflowViewState.IdRef="If_2">
+                              <If.Then>
+                                <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object(){resurs, insats}]" DataTable="[out_ResultTable]" DisplayName="Add Data Row" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                              </If.Then>
+                            </If>
+                          </Sequence>
+                        </TryCatch.Try>
+                        <TryCatch.Catches>
+                          <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch_1">
+                            <ActivityAction x:TypeArguments="s:Exception">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="s:Exception" Name="exOrder" />
+                              </ActivityAction.Argument>
+                              <ui:LogMessage DisplayName="Warn order" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Warn" Message="[&quot;Order kunde inte hamtas, hoppas over: &quot; &amp; exOrder.Message]" />
+                            </ActivityAction>
+                          </Catch>
+                        </TryCatch.Catches>
+                      </TryCatch>
+                    </ActivityAction>
+                  </ui:ForEach.Body>
+                </ui:ForEach>
+              </Sequence>
+            </If.Then>
+          </If>
+        </ActivityAction>
+      </ui:ForEach.Body>
+    </ui:ForEach>
+  </Sequence>
+</Activity>

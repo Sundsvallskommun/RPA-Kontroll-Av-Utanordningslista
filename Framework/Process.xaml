@@ -116,9 +116,17 @@
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
       <AssemblyReference>System.Data.SqlClient</AssemblyReference>
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1778,2467" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <sap:WorkflowViewStateService.ViewState>
+    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+      <x:Boolean x:Key="ShouldCollapseAll">True</x:Boolean>
+    </scg:Dictionary>
+  </sap:WorkflowViewStateService.ViewState>
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1138,2746" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="FilePathToApplication" />
       <Variable x:TypeArguments="ss:SecureString" Name="TempEncryptionKey" />
@@ -144,6 +152,7 @@
       <Variable x:TypeArguments="x:Double" Name="PercentToAcceptUtanordningslistanOmkostnad" />
       <Variable x:TypeArguments="x:Double" Name="PercentToAcceptUtanordningslistan" />
       <Variable x:TypeArguments="scg:IEnumerable(ui:QueueItem)" Name="QueueItems" />
+      <Variable x:TypeArguments="ss:SecureString" Name="LifeCareApiKey" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -151,7 +160,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="1007,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]">
+    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="452,57" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -159,7 +168,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <Sequence DisplayName="Init Vars" sap:VirtualizedContainerService.HintSize="1007,57" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="Init Vars" sap:VirtualizedContainerService.HintSize="452,1699" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="EncryptionKey" />
         <Variable x:TypeArguments="x:Int32" Name="Month" />
@@ -171,12 +180,25 @@
       </Sequence.Variables>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:GetRobotCredential TimeoutMS="{x:Null}" Username="{x:Null}" AssetName="EncryptionKey" CacheStrategy="None" DisplayName="Get Credential" sap:VirtualizedContainerService.HintSize="479,181" sap2010:WorkflowViewState.IdRef="GetRobotCredential_2" Password="[EncryptionKeySecureString]" />
-      <ui:MultipleAssign DisplayName="Multiple Assign TransactionItem" sap:VirtualizedContainerService.HintSize="479,180" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+      <ui:GetRobotCredential TimeoutMS="{x:Null}" Username="{x:Null}" AssetName="EncryptionKey" CacheStrategy="None" DisplayName="Get Credential EncryptionKey" sap:VirtualizedContainerService.HintSize="416,181" sap2010:WorkflowViewState.IdRef="GetRobotCredential_2" Password="[EncryptionKeySecureString]">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsPinned">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:GetRobotCredential>
+      <ui:GetRobotCredential TimeoutMS="{x:Null}" Username="{x:Null}" AssetName="Cred_NA_LifeCareECApiKey" CacheStrategy="None" DisplayName="Get Credential" sap:VirtualizedContainerService.HintSize="416,181" sap2010:WorkflowViewState.IdRef="GetRobotCredential_3" Password="[LifeCareApiKey]">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsPinned">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:GetRobotCredential>
+      <ui:MultipleAssign DisplayName="Multiple Assign TransactionItem" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
         <ui:MultipleAssign.AssignOperations>
           <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -204,7 +226,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:MultipleAssign>
-      <Assign DisplayName="Assign Month" sap:VirtualizedContainerService.HintSize="479,175" sap2010:WorkflowViewState.IdRef="Assign_5">
+      <Assign DisplayName="Assign Month" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_5">
         <Assign.To>
           <OutArgument x:TypeArguments="x:Int32">[Month]</OutArgument>
         </Assign.To>
@@ -212,7 +234,7 @@
           <InArgument x:TypeArguments="x:Int32">[DateTime.ParseExact(MonthName, "MMMM", System.Globalization.CultureInfo.GetCultureInfo("sv-SE")).Month]</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign DisplayName="Assign Omkosnadsersattning" sap:VirtualizedContainerService.HintSize="479,175" sap2010:WorkflowViewState.IdRef="Assign_23">
+      <Assign DisplayName="Assign Omkosnadsersattning" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_23">
         <Assign.To>
           <OutArgument x:TypeArguments="x:Int32">[Omkosnadsersattning]</OutArgument>
         </Assign.To>
@@ -226,7 +248,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </Assign>
-      <Assign DisplayName="Assign Arvodesersattning" sap:VirtualizedContainerService.HintSize="479,175" sap2010:WorkflowViewState.IdRef="Assign_6">
+      <Assign DisplayName="Assign Arvodesersattning" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_6">
         <Assign.To>
           <OutArgument x:TypeArguments="x:Int32">[Arvodesersattning]</OutArgument>
         </Assign.To>
@@ -240,7 +262,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </Assign>
-      <Assign DisplayName="Assign DateFrom" sap:VirtualizedContainerService.HintSize="479,175" sap2010:WorkflowViewState.IdRef="Assign_31">
+      <Assign DisplayName="Assign DateFrom" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_31">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[DateFrom]</OutArgument>
         </Assign.To>
@@ -254,7 +276,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </Assign>
-      <Assign DisplayName="Assign DateTo" sap:VirtualizedContainerService.HintSize="479,175" sap2010:WorkflowViewState.IdRef="Assign_32">
+      <Assign DisplayName="Assign DateTo" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_32">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[DateTo]</OutArgument>
         </Assign.To>
@@ -268,7 +290,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </Assign>
-      <Assign DisplayName="Assign DectrypedSSN" sap:VirtualizedContainerService.HintSize="479,175" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign DisplayName="Assign DectrypedSSN" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_3">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[DectrypedSSN]</OutArgument>
         </Assign.To>
@@ -276,14 +298,14 @@
           <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("SSN").ToString]</InArgument>
         </Assign.Value>
       </Assign>
-      <uca:DecryptText KeyEncodingString="{x:Null}" KeySecureString="{x:Null}" Algorithm="AESGCM" DisplayName="Decrypt Text" sap:VirtualizedContainerService.HintSize="479,226" sap2010:WorkflowViewState.IdRef="DecryptText_2" Input="[DectrypedSSN]" Key="[New System.Net.NetworkCredential(String.Empty,EncryptionKeySecureString).Password]" KeyInputModeSwitch="Key" Result="[SSN]">
+      <uca:DecryptText KeyEncodingString="{x:Null}" KeySecureString="{x:Null}" Algorithm="AESGCM" DisplayName="Decrypt Text" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="DecryptText_2" Input="[DectrypedSSN]" Key="[New System.Net.NetworkCredential(String.Empty,EncryptionKeySecureString).Password]" KeyInputModeSwitch="Key" Result="[SSN]">
         <uca:DecryptText.Encoding>
           <InArgument x:TypeArguments="st:Encoding">
             <PropertyValue x:TypeArguments="st:Encoding, st:Encoding" Operand="{x:Null}" sap2010:WorkflowViewState.IdRef="PropertyValue`2_2" PropertyName="UTF8" />
           </InArgument>
         </uca:DecryptText.Encoding>
       </uca:DecryptText>
-      <Assign DisplayName="Assign DectrypedName" sap:VirtualizedContainerService.HintSize="479,175" sap2010:WorkflowViewState.IdRef="Assign_38">
+      <Assign DisplayName="Assign DectrypedName" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_38">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[DectrypedName]</OutArgument>
         </Assign.To>
@@ -291,14 +313,14 @@
           <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("Namn").ToString]</InArgument>
         </Assign.Value>
       </Assign>
-      <uca:DecryptText KeyEncodingString="{x:Null}" KeySecureString="{x:Null}" Algorithm="AESGCM" DisplayName="Decrypt Text" sap:VirtualizedContainerService.HintSize="479,226" sap2010:WorkflowViewState.IdRef="DecryptText_3" Input="[DectrypedName]" Key="[New System.Net.NetworkCredential(String.Empty,EncryptionKeySecureString).Password]" KeyInputModeSwitch="Key" Result="[Name]">
+      <uca:DecryptText KeyEncodingString="{x:Null}" KeySecureString="{x:Null}" Algorithm="AESGCM" DisplayName="Decrypt Text" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="DecryptText_3" Input="[DectrypedName]" Key="[New System.Net.NetworkCredential(String.Empty,EncryptionKeySecureString).Password]" KeyInputModeSwitch="Key" Result="[Name]">
         <uca:DecryptText.Encoding>
           <InArgument x:TypeArguments="st:Encoding">
             <PropertyValue x:TypeArguments="st:Encoding, st:Encoding" Operand="{x:Null}" sap2010:WorkflowViewState.IdRef="PropertyValue`2_3" PropertyName="UTF8" />
           </InArgument>
         </uca:DecryptText.Encoding>
       </uca:DecryptText>
-      <Assign DisplayName="Assign DictionaryKey" sap:VirtualizedContainerService.HintSize="479,175" sap2010:WorkflowViewState.IdRef="Assign_15">
+      <Assign DisplayName="Assign DictionaryKey" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_15">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[DictionaryKey]</OutArgument>
         </Assign.To>
@@ -306,7 +328,7 @@
           <InArgument x:TypeArguments="x:String">[MonthName]</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign DisplayName="Assign PercentToAcceptUtanordningslistan" sap:VirtualizedContainerService.HintSize="479,175" sap2010:WorkflowViewState.IdRef="Assign_24">
+      <Assign DisplayName="Assign PercentToAcceptUtanordningslistan" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_24">
         <Assign.To>
           <OutArgument x:TypeArguments="x:Double">[PercentToAcceptUtanordningslistan]</OutArgument>
         </Assign.To>
@@ -314,7 +336,7 @@
           <InArgument x:TypeArguments="x:Double">[CDbl(in_Config("PercentToAcceptUtanordningslistan").ToString)]</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign DisplayName="Assign FolderPathExcelFiles" sap:VirtualizedContainerService.HintSize="479,175" sap2010:WorkflowViewState.IdRef="Assign_36">
+      <Assign DisplayName="Assign FolderPathExcelFiles" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_36">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[FolderPathToUtanordningslistaResult]</OutArgument>
         </Assign.To>
@@ -322,7 +344,7 @@
           <InArgument x:TypeArguments="x:String">[in_Config("FolderPathToUtanordningslistaResult").ToString]</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign DisplayName="Assign FilePathExcel" sap:VirtualizedContainerService.HintSize="479,175" sap2010:WorkflowViewState.IdRef="Assign_12">
+      <Assign DisplayName="Assign FilePathExcel" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_12">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[FilePathExcel]</OutArgument>
         </Assign.To>
@@ -330,7 +352,7 @@
           <InArgument x:TypeArguments="x:String" xml:space="preserve">[FolderPathToUtanordningslistaResult + "\" + MonthName + " " + Year +  in_Config("ProcessingPrefix").ToString + ".xlsx"]</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign DisplayName="Assign FilePathToErsättningsFil" sap:VirtualizedContainerService.HintSize="479,175" sap2010:WorkflowViewState.IdRef="Assign_34">
+      <Assign DisplayName="Assign FilePathToErsättningsFil" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_34">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[FilePathToErsättningsFil]</OutArgument>
         </Assign.To>
@@ -338,7 +360,7 @@
           <InArgument x:TypeArguments="x:String">[in_Config("FilePathToErsättningsFil").ToString]</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign DisplayName="Assign PercentToAcceptUtanordningslistanOmkostnad" sap:VirtualizedContainerService.HintSize="479,175" sap2010:WorkflowViewState.IdRef="Assign_63">
+      <Assign DisplayName="Assign PercentToAcceptUtanordningslistanOmkostnad" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_63">
         <Assign.To>
           <OutArgument x:TypeArguments="x:Double">[PercentToAcceptUtanordningslistanOmkostnad]</OutArgument>
         </Assign.To>
@@ -346,8 +368,8 @@
           <InArgument x:TypeArguments="x:Double">[CDbl(in_Config("PercentToAcceptUtanordningslistanOmkostnad").ToString)]</InArgument>
         </Assign.Value>
       </Assign>
-      <ui:FileExistsX DisplayName="File Exists" Exists="[FileExists]" sap:VirtualizedContainerService.HintSize="479,167" sap2010:WorkflowViewState.IdRef="FileExistsX_2" Path="[FilePathExcel]" />
-      <If Condition="[Not FileExists]" DisplayName="If File Do Not Exist" sap:VirtualizedContainerService.HintSize="479,800" sap2010:WorkflowViewState.IdRef="If_12">
+      <ui:FileExistsX DisplayName="File Exists" Exists="[FileExists]" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="FileExistsX_2" Path="[FilePathExcel]" />
+      <If Condition="[Not FileExists]" DisplayName="If File Do Not Exist" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="If_12">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -377,12 +399,12 @@
           </Sequence>
         </If.Else>
       </If>
-      <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[StandardCompensationTableArvode]" DisplayName="Read Range Workbook 2" sap:VirtualizedContainerService.HintSize="479,120" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Arvode" WorkbookPath="[FilePathToErsättningsFil]" />
-      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="479,175" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Info" Message="[&quot;Read Range Workbook 2&quot;]" />
-      <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[StandardCompensationTableOmkostnad]" DisplayName="Read Range Workbook 3" sap:VirtualizedContainerService.HintSize="479,120" sap2010:WorkflowViewState.IdRef="ReadRange_3" SheetName="Omkostnad" WorkbookPath="[FilePathToErsättningsFil]" />
-      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="479,166" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Info" Message="[&quot;Read Range Workbook 1&quot;]" />
+      <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[StandardCompensationTableArvode]" DisplayName="Read Range Workbook 2" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Arvode" WorkbookPath="[FilePathToErsättningsFil]" />
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Info" Message="[&quot;Read Range Workbook 2&quot;]" />
+      <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[StandardCompensationTableOmkostnad]" DisplayName="Read Range Workbook 3" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="ReadRange_3" SheetName="Omkostnad" WorkbookPath="[FilePathToErsättningsFil]" />
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Info" Message="[&quot;Read Range Workbook 1&quot;]" />
     </Sequence>
-    <Assign DisplayName="Assign io_DictLifeCareTables" sap:VirtualizedContainerService.HintSize="1007,175" sap2010:WorkflowViewState.IdRef="Assign_26">
+    <Assign DisplayName="Assign io_DictLifeCareTables" sap:VirtualizedContainerService.HintSize="452,57" sap2010:WorkflowViewState.IdRef="Assign_26">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:Dictionary(x:String, sd:DataTable)">[io_DictLifeCareTables]</OutArgument>
       </Assign.To>
@@ -390,22 +412,37 @@
         <InArgument x:TypeArguments="scg:Dictionary(x:String, sd:DataTable)">[If(io_DictLifeCareTables IsNot Nothing, io_DictLifeCareTables, New Dictionary(Of String, DataTable))]</InArgument>
       </Assign.Value>
     </Assign>
-    <TryCatch sap2010:Annotation.AnnotationText="Aktivitet för att hämta ut från LifeCare" DisplayName="Try Catch Get Data From LifeCare" sap:VirtualizedContainerService.HintSize="1007,488" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch sap2010:Annotation.AnnotationText="Aktivitet för att hämta ut från LifeCare" DisplayName="Try Catch Get Data From LifeCare" sap:VirtualizedContainerService.HintSize="452,500" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">True</x:Boolean>
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence DisplayName="Get Data From LifeCare" sap:VirtualizedContainerService.HintSize="450,94" sap2010:WorkflowViewState.IdRef="Sequence_50">
+        <Sequence DisplayName="Get Data From LifeCare" sap:VirtualizedContainerService.HintSize="450,241" sap2010:WorkflowViewState.IdRef="Sequence_50">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="GetDataFromLifecare - Invoke Workflow File (Lifecare\GetDataFromLifecare.xaml)" sap:VirtualizedContainerService.HintSize="416,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Lifecare\GetDataFromLifecare.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_DateFrom">[DateFrom]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_DateTo">[DateTo]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_DomainUrl">[in_Config("").ToString]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_DomainId">[in_Config("").ToString]</InArgument>
+              <InArgument x:TypeArguments="ss:SecureString" x:Key="in_ApiKey">[LifeCareApiKey]</InArgument>
+              <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_ResultTable">[LifeCare_Table]</OutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsPinned">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InvokeWorkflowFile>
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
@@ -420,12 +457,12 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <Throw DisplayName="Throw No Result found" Exception="[New SystemException(&quot;Inget resultat för månaden: &quot; + MonthName + &quot; i LifeCare.&quot;)]" sap:VirtualizedContainerService.HintSize="450,91" sap2010:WorkflowViewState.IdRef="Throw_3" />
+            <Throw DisplayName="Throw No Result found" Exception="[New SystemException(&quot;Inget resultat för månaden: &quot; + MonthName + &quot; i LifeCare.&quot;)]" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Throw_3" />
           </ActivityAction>
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <Assign DisplayName="Assign LifeCare_Table" sap:VirtualizedContainerService.HintSize="1007,175" sap2010:WorkflowViewState.IdRef="Assign_37">
+    <Assign DisplayName="Assign LifeCare_Table" sap:VirtualizedContainerService.HintSize="452,57" sap2010:WorkflowViewState.IdRef="Assign_37">
       <Assign.To>
         <OutArgument x:TypeArguments="sd:DataTable">[LifeCare_Table]</OutArgument>
       </Assign.To>
@@ -434,12 +471,12 @@
       </Assign.Value>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <If Condition="[LifeCare_Table Is Nothing OrElse LifeCare_Table.Rows.Count = 0]" DisplayName="If No rows or table" sap:VirtualizedContainerService.HintSize="1007,57" sap2010:WorkflowViewState.IdRef="If_14">
+    <If Condition="[LifeCare_Table Is Nothing OrElse LifeCare_Table.Rows.Count = 0]" DisplayName="If No rows or table" sap:VirtualizedContainerService.HintSize="452,57" sap2010:WorkflowViewState.IdRef="If_14">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -466,7 +503,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <Sequence DisplayName="Check Decision from LifeCare" sap:VirtualizedContainerService.HintSize="1007,960" sap2010:WorkflowViewState.IdRef="Sequence_12">
+    <Sequence DisplayName="Check Decision from LifeCare" sap:VirtualizedContainerService.HintSize="452,57" sap2010:WorkflowViewState.IdRef="Sequence_12">
       <Sequence.Variables>
         <Variable x:TypeArguments="sd:DataTable" Name="Test" />
       </Sequence.Variables>
@@ -1076,9 +1113,9 @@
         <x:Reference>__ReferenceID7</x:Reference>
       </Flowchart>
     </Sequence>
-    <ui:WriteRange AddHeaders="False" DataTable="[ExcelFileResult]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="1007,148" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Blad1" StartingCell="A2" WorkbookPath="[FilePathExcel]" />
-    <ui:GetQueueItems Duration="{x:Null}" From="{x:Null}" Priority="{x:Null}" Skip="{x:Null}" TimeoutMS="{x:Null}" To="{x:Null}" Top="{x:Null}" DisplayName="Get Queue Items" FilterStrategy="StartsWith" FolderPath="[in_Config(&quot;OrchestratorQueueFolder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="1007,80" sap2010:WorkflowViewState.IdRef="GetQueueItems_2" QueueItemStates="New" QueueName="[in_Config(&quot;OrchestratorQueueName&quot;).ToString]" Reference="[MonthName]" Result="[QueueItems]" />
-    <If Condition="[QueueItems.Count = 0]" DisplayName="If Rename file" sap:VirtualizedContainerService.HintSize="1007,52" sap2010:WorkflowViewState.IdRef="If_19">
+    <ui:WriteRange AddHeaders="False" DataTable="[ExcelFileResult]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="452,57" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Blad1" StartingCell="A2" WorkbookPath="[FilePathExcel]" />
+    <ui:GetQueueItems Duration="{x:Null}" From="{x:Null}" Priority="{x:Null}" Skip="{x:Null}" TimeoutMS="{x:Null}" To="{x:Null}" Top="{x:Null}" DisplayName="Get Queue Items" FilterStrategy="StartsWith" FolderPath="[in_Config(&quot;OrchestratorQueueFolder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="452,57" sap2010:WorkflowViewState.IdRef="GetQueueItems_2" QueueItemStates="New" QueueName="[in_Config(&quot;OrchestratorQueueName&quot;).ToString]" Reference="[MonthName]" Result="[QueueItems]" />
+    <If Condition="[QueueItems.Count = 0]" DisplayName="If Rename file" sap:VirtualizedContainerService.HintSize="452,48" sap2010:WorkflowViewState.IdRef="If_19">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
