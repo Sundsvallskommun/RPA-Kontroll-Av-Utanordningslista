@@ -1,31 +1,41 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="CloseAllApplications" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1481,702" sap2010:WorkflowViewState.IdRef="CloseAllApplications_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="CloseAllApplications" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:lei="clr-namespace:Lifecare.Elderly_Care.Internal_API;assembly=Lifecare" xmlns:lg="clr-namespace:Lifecare.General;assembly=Lifecare" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property sap2010:Annotation.AnnotationText="REFrameworks konfiguration." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))">
+      <x:Property.Attributes>
+        <RequiredArgumentAttribute />
+      </x:Property.Attributes>
+    </x:Property>
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>CloseAllApplications_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
-      <x:String>Microsoft.VisualBasic</x:String>
-      <x:String>Microsoft.VisualBasic.Activities</x:String>
-      <x:String>System</x:String>
       <x:String>System.Activities</x:String>
-      <x:String>System.Activities.Expressions</x:String>
       <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
       <x:String>System.Activities.Validation</x:String>
       <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System</x:String>
       <x:String>System.Collections</x:String>
       <x:String>System.Collections.Generic</x:String>
-      <x:String>System.Collections.ObjectModel</x:String>
       <x:String>System.Data</x:String>
       <x:String>System.Diagnostics</x:String>
       <x:String>System.Drawing</x:String>
       <x:String>System.IO</x:String>
       <x:String>System.Linq</x:String>
       <x:String>System.Net.Mail</x:String>
-      <x:String>System.Reflection</x:String>
-      <x:String>System.Runtime.InteropServices</x:String>
-      <x:String>System.Runtime.Serialization</x:String>
-      <x:String>System.Windows.Markup</x:String>
       <x:String>System.Xml</x:String>
       <x:String>System.Xml.Linq</x:String>
       <x:String>UiPath.Core</x:String>
+      <x:String>System.Windows.Markup</x:String>
       <x:String>UiPath.Core.Activities</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
       <x:String>GlobalVariablesNamespace</x:String>
       <x:String>GlobalConstantsNamespace</x:String>
     </sco:Collection>
@@ -33,7 +43,7 @@
   <TextExpression.ReferencesForImplementation>
     <sco:Collection x:TypeArguments="AssemblyReference">
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
-      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
       <AssemblyReference>PresentationCore</AssemblyReference>
       <AssemblyReference>PresentationFramework</AssemblyReference>
       <AssemblyReference>System</AssemblyReference>
@@ -43,32 +53,159 @@
       <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
       <AssemblyReference>System.Core</AssemblyReference>
       <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
       <AssemblyReference>System.Drawing</AssemblyReference>
       <AssemblyReference>System.Linq</AssemblyReference>
-      <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>System.ObjectModel</AssemblyReference>
       <AssemblyReference>System.Private.CoreLib</AssemblyReference>
-      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
-      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.Xaml</AssemblyReference>
       <AssemblyReference>System.Xml</AssemblyReference>
       <AssemblyReference>System.Xml.Linq</AssemblyReference>
-      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
       <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Do the necessary procedures for ending the process (e.g., logout) and close the used applications." DisplayName="Close All Applications" sap:VirtualizedContainerService.HintSize="1784,536.6566666666666" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence sap2010:Annotation.AnnotationText="Loggar ut ur LifeCare och stänger browsern.&#xA;&#xA;Körs även när körningen avbryts på grund av ett sessionsfel. Log Out and Close kan då misslyckas eftersom sessionen redan är trasig - därför är den inbäddad i en Try Catch som loggar och går vidare. En misslyckad utloggning ska inte maskera det ursprungliga felet." DisplayName="CloseAllApplications" sap:VirtualizedContainerService.HintSize="1784,581.6566666666666" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Boolean" Name="LogOutOk" />
+      <Variable x:TypeArguments="njl:JToken" Name="ProbeJson" />
+      <Variable x:TypeArguments="x:String" Name="ProbeCode" />
+      <Variable x:TypeArguments="x:Boolean" Name="SessionAlive" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log message (close applications)" sap:VirtualizedContainerService.HintSize="450,166" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Closing applications...&quot;]" />
+    <ui:LogMessage DisplayName="Log message (close applications)" sap:VirtualizedContainerService.HintSize="450,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Loggar ut ur LifeCare och stänger applikationer.&quot;]" />
+    <TryCatch DisplayName="Probe Before Logout" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="TryCatch_Probe">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <TryCatch.Try>
+        <Sequence DisplayName="Probe" sap:VirtualizedContainerService.HintSize="450,517" sap2010:WorkflowViewState.IdRef="Sequence_Probe">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <lei:Get_Decisions ResponseText="{x:Null}" DisplayName="Probe Session (Get Decisions)" DomainUrl="[in_Config(&quot;LifeCareECDomainUrl&quot;).ToString]" sap:VirtualizedContainerService.HintSize="416,283" sap2010:WorkflowViewState.IdRef="Probe_Close_1" ResponseCode="[ProbeCode]" ResponseJToken="[ProbeJson]" />
+          <Assign DisplayName="Assign SessionAlive" sap:VirtualizedContainerService.HintSize="416,170" sap2010:WorkflowViewState.IdRef="Assign_Probe">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Boolean">[SessionAlive]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Boolean">[ProbeJson IsNot Nothing]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_Probe">
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="probeException" />
+            </ActivityAction.Argument>
+            <Assign DisplayName="Assign No Session" sap:VirtualizedContainerService.HintSize="450,143" sap2010:WorkflowViewState.IdRef="Assign_NoSession">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Boolean">[SessionAlive]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Boolean">[False]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+    <If sap2010:Annotation.AnnotationText="Försöker bara logga ut när det finns något att logga ut ur.&#xA;&#xA;Sonden kostar ett HTTP-anrop. Utan den kostar ett misslyckat försök trettio sekunders selektor-timeout, och Use Browser öppnar dessutom ett nytt fönster som ingen stänger.&#xA;&#xA;Det här körs oftast efter ett sessionsfel, alltså just när sessionen ÄR död. Då är snabbvägen ut den normala vägen, inte undantaget." Condition="[SessionAlive]" DisplayName="If Session Still Alive" sap:VirtualizedContainerService.HintSize="450,240" sap2010:WorkflowViewState.IdRef="If_Alive">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence sap2010:Annotation.AnnotationText="Verifierar utloggningen med sessionssonden i stallet for att lita pa out_Sucess.&#xA;&#xA;Bibliotekets egen kontroll ar ett UiElementExists pa ett fonster med title='Tieto'. Den sager ingenting om sessionen - bara om ett fonster med den titeln finns. Svarar LifeCare inte langre pa sessionens cookies ar vi utloggade, oavsett vad fonstret heter.&#xA;&#xA;Samma lardom som med GET Request: ett bibliotek som signalerar fel utan att kasta gor felhanteringen osynligt verkningslos." DisplayName="Log Out and Verify" sap:VirtualizedContainerService.HintSize="486,1389" sap2010:WorkflowViewState.IdRef="Sequence_Logout">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <TryCatch DisplayName="Try Log Out" sap:VirtualizedContainerService.HintSize="452,584" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+            <TryCatch.Try>
+              <lg:Log_Out_and_Close DisplayName="Log Out and Close" sap:VirtualizedContainerService.HintSize="450,143" sap2010:WorkflowViewState.IdRef="Log_Out_and_Close_1" in_Url="[in_Config(&quot;LifeCareECLoginUrl&quot;).ToString]" out_Sucess="[LogOutOk]" />
+            </TryCatch.Try>
+            <TryCatch.Catches>
+              <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                <ActivityAction x:TypeArguments="s:Exception">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                  </ActivityAction.Argument>
+                  <ui:LogMessage DisplayName="Log message (log out failed)" sap:VirtualizedContainerService.HintSize="450,143" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Warn" Message="[&quot;Utloggningen misslyckades (&quot; + exception.GetType.Name + &quot;). Sessionen var sannolikt redan trasig. Går vidare.&quot;]" />
+                </ActivityAction>
+              </Catch>
+            </TryCatch.Catches>
+          </TryCatch>
+          <TryCatch sap2010:Annotation.AnnotationText="Verifierar utloggningen genom att kora samma sond IGEN efter Log Out and Close. Svarar sessionen fortfarande = kvar inloggad. Kastar / Nothing = sessionen dod (Chrome stangt eller 360/401 pa cookies) = utloggning bekraftad." DisplayName="Verify Session Dead" sap:VirtualizedContainerService.HintSize="452,523" sap2010:WorkflowViewState.IdRef="TryCatch_Verify">
+            <TryCatch.Try>
+              <Sequence DisplayName="Re-probe" sap:VirtualizedContainerService.HintSize="450,104" sap2010:WorkflowViewState.IdRef="Sequence_Verify">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <lei:Get_Decisions ResponseText="{x:Null}" DisplayName="Verify Session (Get Decisions)" DomainUrl="[in_Config(&quot;LifeCareECDomainUrl&quot;).ToString]" sap2010:WorkflowViewState.IdRef="Verify_Close_1" ResponseCode="[ProbeCode]" ResponseJToken="[ProbeJson]" />
+                <Assign DisplayName="Assign SessionAlive (efter logout)" sap2010:WorkflowViewState.IdRef="Assign_VerifyAlive">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Boolean">[SessionAlive]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Boolean">[ProbeJson IsNot Nothing]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </Sequence>
+            </TryCatch.Try>
+            <TryCatch.Catches>
+              <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_Verify">
+                <ActivityAction x:TypeArguments="s:Exception">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="s:Exception" Name="verifyException" />
+                  </ActivityAction.Argument>
+                  <Assign DisplayName="Assign Session Dead" sap:VirtualizedContainerService.HintSize="450,143" sap2010:WorkflowViewState.IdRef="Assign_VerifyDead">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Boolean">[SessionAlive]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Boolean">[False]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </ActivityAction>
+              </Catch>
+            </TryCatch.Catches>
+          </TryCatch>
+          <If Condition="[SessionAlive]" DisplayName="If Still Logged In" sap:VirtualizedContainerService.HintSize="452,218" sap2010:WorkflowViewState.IdRef="If_StillAlive">
+            <If.Then>
+              <ui:LogMessage DisplayName="Log message (still logged in)" sap2010:WorkflowViewState.IdRef="LogMessage_StillAlive" Level="Warn" Message="[&quot;Sessionen svarar fortfarande efter Log Out and Close (kod &quot; + ProbeCode + &quot;) - utloggningen gick INTE igenom. Bibliotekets out_Sucess sa &quot; + LogOutOk.ToString + &quot;.&quot;]" />
+            </If.Then>
+            <If.Else>
+              <ui:LogMessage DisplayName="Log message (logout verified)" sap2010:WorkflowViewState.IdRef="LogMessage_Verified" Level="Info" Message="[&quot;Utloggning verifierad - sessionen svarar inte längre.&quot;]" />
+            </If.Else>
+          </If>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <ui:LogMessage DisplayName="Log message (nothing to log out of)" sap:VirtualizedContainerService.HintSize="486,143" sap2010:WorkflowViewState.IdRef="LogMessage_NoSession" Level="Info" Message="[&quot;Ingen levande LifeCare-session att logga ut ur. Hoppar över utloggningen.&quot;]" />
+      </If.Else>
+    </If>
   </Sequence>
 </Activity>

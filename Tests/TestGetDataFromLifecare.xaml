@@ -1,4 +1,8 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="TestGetDataFromLifecare" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="TestGetDataFromLifecare" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_ContextPersonId" Type="InArgument(x:String)" />
+  </x:Members>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>GlobalConstantsNamespace</x:String>
@@ -9,6 +13,11 @@
       <x:String>System.Linq</x:String>
       <x:String>UiPath.Core</x:String>
       <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Reflection</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -18,9 +27,27 @@
       <AssemblyReference>System.ObjectModel</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="TestGetDataFromLifecare" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <sap:WorkflowViewStateService.ViewState>
+    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+      <x:Boolean x:Key="ShouldCollapseAll">True</x:Boolean>
+    </scg:Dictionary>
+  </sap:WorkflowViewStateService.ViewState>
+  <Sequence DisplayName="TestGetDataFromLifecare" sap:VirtualizedContainerService.HintSize="1778,1130" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Object" Name="domainUrlObj" />
       <Variable x:TypeArguments="x:Object" Name="domainIdObj" />
@@ -31,24 +58,42 @@
       <Variable x:TypeArguments="x:String" Name="dateFrom" />
       <Variable x:TypeArguments="x:String" Name="dateTo" />
       <Variable x:TypeArguments="sd:DataTable" Name="resultTable" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="Config" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="LifeCareECDomainUrl" CacheStrategy="None" DisplayName="Get Asset DomainUrl" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="InitAllApplicationsTestCase - Invoke Workflow File (Tests\InitAllApplicationsTestCase.xaml)" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Tests\InitAllApplicationsTestCase.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <scg:Dictionary x:TypeArguments="x:String, Argument" />
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke InitAllSettings workflow" sap:VirtualizedContainerService.HintSize="450,182" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Framework/InitAllSettings.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ConfigFile">Data\Config.xlsx</InArgument>
+        <InArgument x:TypeArguments="s:String[]" x:Key="in_ConfigSheets">[{"Settings","Constants"}]</InArgument>
+        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_Config">[Config]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="LifeCareECDomainUrl" CacheStrategy="None" DisplayName="Get Asset DomainUrl" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
       <ui:GetRobotAsset.Value>
         <OutArgument x:TypeArguments="x:Object">[domainUrlObj]</OutArgument>
       </ui:GetRobotAsset.Value>
     </ui:GetRobotAsset>
-    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="LifeCareECDomainId" CacheStrategy="None" DisplayName="Get Asset DomainId" sap2010:WorkflowViewState.IdRef="GetRobotAsset_2">
+    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="LifeCareECDomainId" CacheStrategy="None" DisplayName="Get Asset DomainId" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="GetRobotAsset_2">
       <ui:GetRobotAsset.Value>
         <OutArgument x:TypeArguments="x:Object">[domainIdObj]</OutArgument>
       </ui:GetRobotAsset.Value>
     </ui:GetRobotAsset>
-    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="Cred_NA_LifeCareECApiKey" CacheStrategy="None" DisplayName="Get Credential ApiKey" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[apiKey]" Username="[credUser]" />
-    <Assign DisplayName="Assign domainUrl" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="Cred_NA_LifeCareECApiKey" CacheStrategy="None" DisplayName="Get Credential ApiKey" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[apiKey]" Username="[credUser]" />
+    <Assign DisplayName="Assign domainUrl" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[domainUrl]</OutArgument>
       </Assign.To>
@@ -56,7 +101,7 @@
         <InArgument x:TypeArguments="x:String">[domainUrlObj.ToString]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Assign domainId" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign DisplayName="Assign domainId" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[domainId]</OutArgument>
       </Assign.To>
@@ -64,7 +109,7 @@
         <InArgument x:TypeArguments="x:String">[domainIdObj.ToString]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Assign dateFrom" sap2010:WorkflowViewState.IdRef="Assign_3">
+    <Assign DisplayName="Assign dateFrom" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[dateFrom]</OutArgument>
       </Assign.To>
@@ -72,7 +117,7 @@
         <InArgument x:TypeArguments="x:String">[New DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).ToString("yyyyMMdd")]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Assign dateTo" sap2010:WorkflowViewState.IdRef="Assign_4">
+    <Assign DisplayName="Assign dateTo" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="Assign_4">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[dateTo]</OutArgument>
       </Assign.To>
@@ -80,24 +125,41 @@
         <InArgument x:TypeArguments="x:String">[New DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(1).AddDays(-1).ToString("yyyyMMdd")]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GetDataFromLifecare" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Lifecare\GetDataFromLifecare.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GetDataFromLifecare" sap:VirtualizedContainerService.HintSize="450,182" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="LifeCare\GetDataFromLifecare.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_DateFrom">[dateFrom]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_DateTo">[dateTo]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_DomainUrl">[domainUrl]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_DomainId">[domainId]</InArgument>
         <InArgument x:TypeArguments="ss:SecureString" x:Key="in_ApiKey">[apiKey]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_CpDomainUrl">[domainUrl]</InArgument>
         <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_ResultTable">[resultTable]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <ui:LogMessage DisplayName="Log antal rader" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;GetDataFromLifecare OK. Rader: &quot; &amp; If(resultTable Is Nothing, 0, resultTable.Rows.Count).ToString &amp; &quot; | Period: &quot; &amp; dateFrom &amp; &quot;-&quot; &amp; dateTo]" />
-    <If Condition="[resultTable Is Nothing OrElse resultTable.Rows.Count = 0]" DisplayName="If tomt" sap2010:WorkflowViewState.IdRef="If_1">
+    <ui:LogMessage DisplayName="Log antal rader" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;GetDataFromLifecare OK. Rader: &quot; &amp; If(resultTable Is Nothing, 0, resultTable.Rows.Count).ToString &amp; &quot; | Period &quot; &amp; dateFrom &amp; &quot;-&quot; &amp; dateTo]" />
+    <If Condition="[resultTable Is Nothing OrElse resultTable.Rows.Count = 0]" DisplayName="If tomt" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <ui:LogMessage DisplayName="Log tomt" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Warn" Message="[&quot;Inga kontaktperson-beslut hittades for perioden. Testmiljon kan sakna aktiva beslut.&quot;]" />
+        <ui:LogMessage DisplayName="Log tomt" sap:VirtualizedContainerService.HintSize="334,143" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Warn" Message="[&quot;Inga kontaktperson-beslut i perioden (kolla cookie, nyckel och period).&quot;]" />
       </If.Then>
       <If.Else>
-        <ui:LogMessage DisplayName="Log insatser" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Insatser (distinct): &quot; &amp; String.Join(&quot;, &quot;, resultTable.Rows.Cast(Of System.Data.DataRow)().Select(Function(r) r(&quot;Insats&quot;).ToString).Distinct().ToArray())]" />
+        <ui:LogMessage DisplayName="Log insatser" sap:VirtualizedContainerService.HintSize="334,143" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Distinkta resurser: &quot; &amp; resultTable.Rows.Cast(Of System.Data.DataRow)().Select(Function(r) r(&quot;resurs&quot;).ToString).Distinct().Count.ToString &amp; &quot; | Insatser: &quot; &amp; String.Join(&quot;, &quot;, resultTable.Rows.Cast(Of System.Data.DataRow)().Select(Function(r) r(&quot;Insats&quot;).ToString).Distinct().ToArray())]" />
       </If.Else>
     </If>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CloseAllApplications - Invoke Workflow File (Framework\CloseAllApplications.xaml)" sap:VirtualizedContainerService.HintSize="450,173" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Framework\CloseAllApplications.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
   </Sequence>
 </Activity>
